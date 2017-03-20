@@ -6,41 +6,45 @@ Time spent: 10 hours spent in total
 
 ## Pentesting Report
 
-1. (Required) XSS Vulnerability due to UTF8 tructed data
-  - [x] Summary: 
+1. (Required) Authenticated Stored Cross-Site Scripting via Image Filename
+  - [x] Summary: Wordpress's media upload function allows multiple media format uploading, such as: audio, video, image, etc. Insufficient validation of the uploaded file name is performed, which leads to potential XSS attack by a crafted file name payload.  
     - Vulnerability types:XSS 
     - Tested in version:WP 4.2.4
-    - Fixed in version: 4.3.1
+    - Fixed in version: 4.6.1
   - [x] GIF Walkthrough: http://i.imgur.com/5i6YT7N.gif
   - [x] Steps to recreate: 
     - Copy and paste this payload and post it in the comment: <a title='x onmouseover=alert(unescape(/hello%20world/.source)) style=position:absolute;left:0;top:0;width:5000px;height:5000px  AAAAAAAAAAAA...[64 kb]..AAA'></a>
   - [ ] Affected source code:
-2. (Required) WordPress  4.0-4.7.2 - Authenticated Stored Cross-Site Scripting (XSS) in YouTube URL Embeds
-  - [x] Summary: 
+2. (Required) WordPress  Authenticated Stored Cross-Site Scripting (XSS) in YouTube URL Embeds
+  - [x] Summary: Insufficient satinization in wordpress's embed shortcode function, leading to potential XSS attack.  
     - Vulnerability types: XSS
-    - Tested in version: 4.0-4.7.2
-    - Fixed in version: 
+    - Tested in version: 4.2.4
+    - Fixed in version: 4.7.3
   - [x] GIF Walkthrough:http://i.imgur.com/EIPLH79.gif 
   - [x] Steps to recreate: 
     - Copy and paste this payload into a new post: [embed src='https://youtube.com/embed/11111\x3csvg onload=alert(1)\x3e'][/embed]
-  - [ ] Affected source code:
+  - [x] Affected source code:
     - [Link 1](https://developer.wordpress.org/reference/functions/do_shortcode/)
     - [Link 2](https://developer.wordpress.org/reference/functions/wp_embed_register_handler/)
     - [Link 3](https://developer.wordpress.org/reference/classes/wp_embed/autoembed/)
-3. (Required) Vulnerability Name or ID
-  - [ ] Summary: 
-    - Vulnerability types:
-    - Tested in version:
-    - Fixed in version: 
-  - [ ] GIF Walkthrough: 
-  - [ ] Steps to recreate: 
-  - [ ] Affected source code:
-    - [Link 1](https://core.trac.wordpress.org/browser/tags/version/src/source_file.php)
+3. (Required) Authenticated Cross-Site Scripting (XSS) via Media File Metadata
+  - [x] Summary: The meta information that stored in audio files are not properly sanitized when they are uploaded with editor/administrator. Rendering the wp_playlist_shortcode() function will cause potential XSS attack.  
+    - Vulnerability types: XSS 
+    - Tested in version: 4.2.4
+    - Fixed in version: 4.7.3
+  - [x] GIF Walkthrough:http://i.imgur.com/5jDOAHV.gif
+  - [x] Steps to recreate: In wordpress's dashboard, choose Media -> Upload New Media. Upload the mp2 file that is in the link attached in the assets. View the newly added meida. 
+  - [x] Affected source code:
+    - [Link 1](https://developer.wordpress.org/reference/functions/wp_playlist_shortcode/)
 
 
 ## Assets
 
-List any additional assets, such as scripts or files
+- Payload of attack 1: <a title='x onmouseover=alert(unescape(/hello%20world/.source)) style=position:absolute;left:0;top:0;width:5000px;height:5000px  AAAAAAAAAAAA...[64 kb]..AAA'></a>
+
+- Payload of attack 2: [embed src='https://youtube.com/embed/11111\x3csvg onload=alert(1)\x3e'][/embed]
+
+- Download link of attack 3: https://drive.google.com/file/d/0BzsBD-G31f93cWhZay11dDREQ0k/view?usp=sharing
 
 ## Resources
 
@@ -51,11 +55,10 @@ GIFs created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while doing the work
+This assignment really helped me in starting bug hunting in the real world. First, I learnt how to use WPScan. Second, after a few bug reproduction, I realize many vulnerabilities are very similar in style, and you can focus on some "high risk" areas instead of reading the whole codebase. 
 
-## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2017] Lijie Zhou
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
